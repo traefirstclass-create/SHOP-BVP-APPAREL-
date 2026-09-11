@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Marketing You Can Wear — Brand Vision Pros</title>
+<meta name="description" content="A limited run of wearable identity from Brand Vision Pros. Five titles, embroidered — Visionary, Creative Director, Videographer, Marketing, Platform.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;1,9..144,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --black:#0a0a0a;
+    --panel: rgba(255,255,255,0.04);
+    --panel-border: rgba(255,255,255,0.08);
+    --gold:#c9a227;
+    --gold-light:#e3c267;
+    --off-white:#f3efe6;
+    --muted:#8a8578;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--black);
+    color:var(--off-white);
+    font-family:'Inter',sans-serif;
+    line-height:1.5;
+    overflow-x:hidden;
+  }
+  h1,h2,h3,.serif{font-family:'Fraunces',serif;font-weight:500;}
+  a{color:inherit;text-decoration:none;}
+  img,svg{display:block;max-width:100%;}
+
+  .wrap{max-width:1180px;margin:0 auto;padding:0 32px;}
+
+  /* NAV */
+  nav{
+    position:fixed;top:0;left:0;right:0;z-index:50;
+    display:flex;justify-content:space-between;align-items:center;
+    padding:22px 32px;
+    background:linear-gradient(to bottom, rgba(10,10,10,0.9), transparent);
+  }
+  .nav-mark{font-family:'Fraunces',serif;font-size:19px;letter-spacing:0.01em;}
+  .nav-mark span{color:var(--gold);}
+  .nav-cta{
+    border:1px solid var(--panel-border);
+    padding:9px 20px;border-radius:999px;font-size:14px;
+    transition:border-color .2s ease, color .2s ease;
+  }
+  .nav-cta:hover{border-color:var(--gold);color:var(--gold-light);}
+
+  /* HERO */
+  .hero{
+    position:relative;
+    min-height:100vh;
+    display:flex;align-items:center;
+  }
+  .hero-grid{
+    display:grid;grid-template-columns:1.1fr 0.9fr;
+    align-items:center;gap:40px;width:100%;
+    max-width:1180px;margin:0 auto;padding:140px 32px 80px;
+  }
+  .hero-eyebrow{
+    color:var(--muted);font-size:14px;margin-bottom:22px;
+    max-width:360px;
+  }
+  .hero h1{
+    font-size:clamp(40px, 5.4vw, 68px);
+    line-height:1.05;
+    letter-spacing:-0.01em;
+  }
+  .hero-sub{
+    margin-top:26px;
+    color:var(--muted);
+    font-size:17px;
+    max-width:420px;
+  }
+  .hero-actions{margin-top:38px;display:flex;gap:16px;align-items:center;flex-wrap:wrap;}
+  .btn-primary{
+    background:var(--gold);color:#0a0a0a;font-weight:600;
+    padding:15px 30px;border-radius:999px;font-size:15px;
+    transition:background .2s ease, transform .2s ease;
+    display:inline-block;
+    border:none;cursor:pointer;font-family:inherit;
+  }
+  .btn-primary:hover{background:var(--gold-light);transform:translateY(-1px);}
+  .btn-ghost{
+    color:var(--off-white);font-size:15px;border-bottom:1px solid var(--panel-border);
+    padding-bottom:2px;transition:border-color .2s ease, color .2s ease;
+  }
+  .btn-ghost:hover{border-color:var(--gold);color:var(--gold-light);}
+
+  /* HERO CAP VISUAL (illustrated — no photography dependency) */
+  .hero-cap-wrap{
+    position:relative;
+    border-radius:4px;overflow:hidden;
+    aspect-ratio: 1024/1085;
+    border:1px solid var(--panel-border);
+    background:
+      radial-gradient(circle at 50% 38%, rgba(201,162,39,0.16), transparent 60%),
+      var(--black);
+    display:flex;align-items:center;justify-content:center;
+    padding:12%;
+  }
+  .hero-cap-wrap svg{width:100%;height:100%;}
+
+  /* PHILOSOPHY STRIP */
+  .strip{
+    border-top:1px solid var(--panel-border);
+    border-bottom:1px solid var(--panel-border);
+    padding:56px 0;
+  }
+  .strip p{
+    font-family:'Fraunces',serif;font-style:italic;font-weight:500;
+    font-size:clamp(22px, 2.6vw, 32px);
+    max-width:800px;line-height:1.4;
+    color:var(--off-white);
+  }
+  .strip p span{color:var(--gold);font-style:normal;}
+
+  /* LINEUP */
+  .lineup{padding:120px 0 100px;}
+  .section-head{margin-bottom:56px;max-width:520px;}
+  .section-head .label{color:var(--gold);font-size:14px;margin-bottom:14px;}
+  .section-head h2{font-size:clamp(28px,3.4vw,40px);line-height:1.15;}
+
+  .lineup-grid{
+    display:grid;grid-template-columns:repeat(5,1fr);gap:14px;
+  }
+  .hat-card{
+    border:1px solid var(--panel-border);
+    background:var(--panel);
+    border-radius:4px;
+    padding:22px 16px 18px;
+    min-height:280px;
+    display:flex;flex-direction:column;justify-content:space-between;
+    transition:border-color .25s ease, background .25s ease, transform .25s ease;
+  }
+  .hat-card:hover{border-color:var(--gold); background:rgba(201,162,39,0.05); transform:translateY(-3px);}
+  .hat-card.featured{border-color:var(--gold);}
+  .hat-visual{width:100%;aspect-ratio:1/0.82;}
+  .hat-meta{
+    display:flex;justify-content:space-between;align-items:baseline;
+    font-size:13px;color:var(--muted);
+    margin-top:14px;
+  }
+  .hat-price{color:var(--off-white);font-size:14px;}
+
+  @media (max-width:900px){
+    .lineup-grid{grid-template-columns:repeat(2,1fr);}
+    .hat-card.featured{grid-column:span 2;min-height:340px;}
+  }
+  @media (max-width:520px){
+    .lineup-grid{grid-template-columns:1fr;}
+    .hat-card.featured{grid-column:span 1;}
+  }
+
+  /* STORY */
+  .story{padding:100px 0;border-top:1px solid var(--panel-border);}
+  .story-grid{display:grid;grid-template-columns:0.9fr 1.1fr;gap:60px;align-items:start;}
+  .story h2{font-size:clamp(26px,3vw,36px);line-height:1.2;margin-bottom:24px;}
+  .story-copy p{color:var(--muted);font-size:16px;margin-bottom:18px;max-width:440px;}
+  .story-copy strong{color:var(--off-white);font-weight:500;}
+
+  @media (max-width:900px){
+    .story-grid{grid-template-columns:1fr;}
+  }
+
+  /* DROP / CTA */
+  .drop{
+    padding:110px 0 130px;
+    text-align:left;
+    border-top:1px solid var(--panel-border);
+  }
+  .drop-inner{max-width:620px;}
+  .drop h2{font-size:clamp(32px,4vw,50px);line-height:1.1;margin-bottom:22px;}
+  .drop p{color:var(--muted);font-size:17px;margin-bottom:38px;}
+
+  footer{
+    border-top:1px solid var(--panel-border);
+    padding:32px;
+    display:flex;justify-content:space-between;align-items:center;
+    font-size:13px;color:var(--muted);
+    flex-wrap:wrap;gap:12px;
+  }
+  footer a:hover{color:var(--gold-light);}
+
+  @media (max-width:900px){
+    .hero-grid{grid-template-columns:1fr;padding-top:120px;}
+    .hero-cap-wrap{order:-1;aspect-ratio:16/10;}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-mark">Brand Vision <span>Pros</span></div>
+  <a href="#drop" class="nav-cta">Shop the Drop</a>
+</nav>
+
+<section class="hero">
+  <div class="hero-grid">
+    <div>
+      <div class="hero-eyebrow">A LIMITED RUN OF WEARABLE IDENTITY — DESIGNED, NOT MERCHANDISED</div>
+      <h1>Marketing<br>You Can Wear.</h1>
+      <p class="hero-sub">Anyone can get a hat embroidered. Not everyone can wear proof. Five titles, built the same way I build brands — with intention, not decoration.</p>
+      <div class="hero-actions">
+        <a href="#drop" class="btn-primary">Shop the Drop</a>
+        <a href="#story" class="btn-ghost">Why I made these</a>
+      </div>
+    </div>
+    <div class="hero-cap-wrap">
+      <svg viewBox="0 0 400 320" role="img" aria-label="Black cap with gold Marketing embroidery">
+        <path d="M45 236 C 10 244, -8 262, -14 276 C 30 296, 130 296, 200 262 L 172 224 Z" fill="#111111" stroke="#c9a227" stroke-width="1.5"/>
+        <path d="M58 226 C 34 128, 108 34, 210 34 C 312 34, 378 120, 356 224 C 292 250, 118 250, 58 226 Z" fill="#151515" stroke="#c9a227" stroke-width="1.5"/>
+        <path d="M210 34 C 198 100, 198 180, 210 228" stroke="#c9a227" stroke-width="1" opacity="0.45" fill="none"/>
+        <path d="M96 60 C 130 175, 150 210, 168 232" stroke="#c9a227" stroke-width="1" opacity="0.3" fill="none"/>
+        <path d="M324 60 C 290 175, 270 210, 252 232" stroke="#c9a227" stroke-width="1" opacity="0.3" fill="none"/>
+        <circle cx="210" cy="34" r="6" fill="#c9a227"/>
+        <path id="heroArc" d="M118 168 Q 210 108 302 168" fill="none"/>
+        <text font-family="Fraunces, serif" font-style="italic" font-weight="500" font-size="40" fill="#e3c267" letter-spacing="0.5">
+          <textPath href="#heroArc" startOffset="50%" text-anchor="middle">Marketing</textPath>
+        </text>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<section class="strip">
+  <div class="wrap">
+    <p>This isn't merch. This is <span>Brand Vision Pros</span>, worn.</p>
+  </div>
+</section>
+
+<section class="lineup" id="drop">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="label">THE LINEUP</div>
+      <h2>One brand. Five identities. Zero explaining needed.</h2>
+    </div>
+    <div class="lineup-grid">
+
+      <div class="hat-card featured">
+        <svg class="hat-visual" viewBox="0 0 400 320" role="img" aria-label="Cap embroidered with the word Marketing">
+          <path d="M45 236 C 10 244, -8 262, -14 276 C 30 296, 130 296, 200 262 L 172 224 Z" fill="#111111" stroke="#c9a227" stroke-width="1.5"/>
+          <path d="M58 226 C 34 128, 108 34, 210 34 C 312 34, 378 120, 356 224 C 292 250, 118 250, 58 226 Z" fill="#151515" stroke="#c9a227" stroke-width="1.5"/>
+          <path d="M210 34 C 198 100, 198 180, 210 228" stroke="#c9a227" stroke-width="1" opacity="0.45" fill="none"/>
+          <circle cx="210" cy="34" r="6" fill="#c9a227"/>
+          <path id="arc1" d="M118 168 Q 210 108 302 168" fill="none"/>
+          <text font-family="Fraunces, serif" font-style="italic" font-weight="500" font-size="34" fill="#e3c267">
+            <textPath href="#arc1" startOffset="50%" text-anchor="middle">Marketing</textPath>
+          </text>
+        </svg>
+        <div class="hat-meta"><span>Cap</span><span class="hat-price">$45</span></div>
+      </div>
+
+      <div class="hat-card">
+        <svg class="hat-visual" viewBox="0 0 400 320" role="img" aria-label="Cap embroidered with the word Visionary">
+          <path d="M45 236 C 10 244, -8 262, -14 276 C 30 296, 130 296, 200 262 L 172 224 Z" fill="#111111" stroke="#c9a227" stroke-width="1.5"/>
+          <path d="M58 226 C 34 128, 108 34, 210 34 C 312 34, 378 120, 356 224 C 292 250, 118 250, 58 226 Z" fill="#151515" stroke="#c9a227" stroke-width="1.5"/>
+          <path d="M210 34 C 198 100, 198 180, 210 228" stroke="#c9a227" stroke-width="1" opacity="0.45" fill="none"/>
+          <circle cx="210" cy="34" r="6" fill="#c9a227"/>
+          <path id="arc2" d="M110 168 Q 210 108 310 168" fill="none"/>
+          <text font-family="Fraunces, serif" font-style="italic" font-weight="500" font-size="30" fill="#e3c267">
+            <textPath href="#arc2" startOffset="50%" text-anchor="middle">Visionary</textPath>
+          </text>
+        </svg>
+        <div class="hat-meta"><span>Cap</span><span class="hat-price">$45</span></div>
+      </div>
+
+      <div class="hat-card">
+        <svg class="hat-visual" viewBox="0 0 400 320" role="img" aria-label="Cap embroidered with the words Creative Director">
+          <path d="M45 236 C 10 244, -8 262, -14 276 C 30 296, 130 296, 200 262 L 172 224 Z" fill="#111111" stroke="#c9a227" stroke-width="1.5"/>
+          <path d="M58 226 C 34 128, 108 34, 210 34 C 312 34, 378 120, 356 224 C 292 250, 118 250, 58 226 Z" fill="#151515" stroke="#c9a227" stroke-width="1.5"/>
+          <path d="M210 34 C 198 100, 198 180, 210 228" stroke="#c9a227" stroke-width="1" opacity="0.45" fill="none"/>
+          <circle cx="210" cy="34" r="6" fill="#c9a227"/>
+          <path id="arc3a" d="M120 150 Q 210 100 300 150" fill="none"/>
+          <path id="arc3b" d="M108 195 Q 210 165 312 195" fill="none"/>
+          <text font-family="Fraunces, serif" font-style="italic" font-weight="500" font-size="24" fill="#e3c267">
+            <textPath href="#arc3a" startOffset="50%" text-anchor="middle">Creative</textPath>
+          </text>
+          <text font-family="Fraunces, serif" font-style="italic" font-weight="500" font-size="24" fill="#e3c267">
+            <textPath href="#arc3b" startOffset="50%" text-anchor="middle">Director</textPath>
+          </text>
+        </svg>
+        <div class="hat-meta"><span>Cap</span><span class="hat-price">$45</span></div>
+      </div>
+
+      <div class="hat-card">
+        <svg class="hat-visual" viewBox="0 0 400 320" role="img" aria-label="Cap embroidered with the word Videographer">
+          <path d="M45 236 C 10 244, -8 262, -14 276 C 30 296, 130 296, 200 262 L 172 224 Z" fill="#111111" stroke="#c9a227" stroke-width="1.5"/>
+          <path d="M58 226 C 34 128, 108 34, 210 34 C 312 34, 378 120, 356 224 C 292 250, 118 250, 58 226 Z" fill="#151515" stroke="#c9a227" stroke-width="1.5"/>
+          <path d="M210 34 C 198 100, 198 180, 210 228" stroke="#c9a227" stroke-width="1" opacity="0.45" fill="none"/>
+          <circle cx="210" cy="34" r="6" fill="#c9a227"/>
+          <path id="arc4" d="M100 168 Q 210 100 320 168" fill="none"/>
+          <text font-family="Fraunces, serif" font-style="italic" font-weight="500" font-size="26" fill="#e3c267">
+            <textPath href="#arc4" startOffset="50%" text-anchor="middle">Videographer</textPath>
+          </text>
+        </svg>
+        <div class="hat-meta"><span>Cap</span><span class="hat-price">$45</span></div>
+      </div>
+
+      <div class="hat-card">
+        <svg class="hat-visual" viewBox="0 0 400 320" role="img" aria-label="Cap embroidered with the word Platform">
+          <path d="M45 236 C 10 244, -8 262, -14 276 C 30 296, 130 296, 200 262 L 172 224 Z" fill="#111111" stroke="#c9a227" stroke-width="1.5"/>
+          <path d="M58 226 C 34 128, 108 34, 210 34 C 312 34, 378 120, 356 224 C 292 250, 118 250, 58 226 Z" fill="#151515" stroke="#c9a227" stroke-width="1.5"/>
+          <path d="M210 34 C 198 100, 198 180, 210 228" stroke="#c9a227" stroke-width="1" opacity="0.45" fill="none"/>
+          <circle cx="210" cy="34" r="6" fill="#c9a227"/>
+          <path id="arc5" d="M118 168 Q 210 108 302 168" fill="none"/>
+          <text font-family="Fraunces, serif" font-style="italic" font-weight="500" font-size="32" fill="#e3c267">
+            <textPath href="#arc5" startOffset="50%" text-anchor="middle">Platform</textPath>
+          </text>
+        </svg>
+        <div class="hat-meta"><span>Cap</span><span class="hat-price">$45</span></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="story" id="story">
+  <div class="wrap">
+    <div class="story-grid">
+      <h2>Built for the work,<br>not the shelf.</h2>
+      <div class="story-copy">
+        <p>These titles exist because I needed them before I ever thought about selling them. <strong>Visionary. Creative Director. Videographer. Marketing. Platform.</strong> Every one earned its place the same way — by being true on set, in client meetings, on flights, in rooms full of strangers who asked what I do before I said a word.</p>
+        <p>That's the actual product. Not the stitching — the proof behind it. A hat like this can be copied. What it took to earn wearing it can't.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="drop">
+  <div class="wrap">
+    <div class="drop-inner">
+      <h2>Limited drop. Once they're gone, they're gone.</h2>
+      <p>Five titles. One standard. Pick yours.</p>
+      <a href="#drop" class="btn-primary">Shop the Drop</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div>© 2026 Brand Vision Pros</div>
+  <div><a href="https://instagram.com/brandvisionpros" target="_blank">@brandvisionpros</a></div>
+</footer>
+
+</body>
+</html>
