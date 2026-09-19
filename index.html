@@ -110,21 +110,52 @@
 
   /* HERO */
   .hero{position:relative;isolation:isolate;overflow:hidden;}
-  .hero-bg{position:absolute;inset:0;z-index:-1;}
-  .hero-bg img{width:100%;height:100%;object-fit:cover;}
-  .hero-bg::after{
-    content:'';position:absolute;inset:0;
-    background:linear-gradient(to bottom, rgba(11,9,7,0.7), rgba(11,9,7,0.8) 50%, var(--background));
+  .hero-bg{
+    position:absolute;inset:0;z-index:-1;
+    background:
+      radial-gradient(55% 60% at 78% 42%, rgba(230,181,81,0.13), transparent 70%),
+      radial-gradient(40% 40% at 10% 0%, rgba(230,181,81,0.06), transparent 70%);
   }
-  .hero-inner{max-width:80rem;margin:0 auto;padding:8rem 1.25rem 5rem;}
-  @media (min-width:768px){.hero-inner{padding:11rem 2rem 7rem;}}
-  .hero-copy{max-width:48rem;}
+  .hero-inner{
+    max-width:80rem;margin:0 auto;padding:8rem 1.25rem 5rem;
+    display:grid;grid-template-columns:1fr;gap:3.5rem;align-items:center;
+  }
+  @media (min-width:768px){.hero-inner{padding:10rem 2rem 6rem;}}
+  @media (min-width:1024px){.hero-inner{grid-template-columns:1.05fr 1fr;gap:4rem;}}
+  .hero-copy{max-width:36rem;}
+  .hero-hats{
+    display:grid;grid-template-columns:1fr 1fr;gap:0.75rem;align-items:center;
+    width:100%;max-width:34rem;margin:0 auto;
+  }
+  .hero-col{display:flex;flex-direction:column;gap:0.75rem;}
+  .hero-tile{
+    position:relative;isolation:isolate;overflow:hidden;margin:0;
+    aspect-ratio:5/4;border-radius:0.75rem;
+    border:1px solid var(--border-strong);background:var(--card);
+    box-shadow:0 24px 50px -30px rgba(0,0,0,0.75);
+  }
+  .hero-tile img{
+    width:100%;height:100%;object-fit:cover;object-position:var(--pos,center 50%);max-width:none;
+    transition:transform .7s var(--ease);
+  }
+  .hero-tile:hover img{transform:scale(1.05);}
+  .hero-tile::after{
+    content:'';position:absolute;inset:0;z-index:1;pointer-events:none;
+    background:linear-gradient(to top, rgba(11,9,7,0.75) 0%, transparent 42%);
+  }
+  .hero-tile figcaption{
+    position:absolute;z-index:2;left:0.75rem;bottom:0.6rem;
+    font-family:'Geist Mono',ui-monospace,monospace;font-size:0.6875rem;letter-spacing:0.04em;
+    color:var(--foreground);text-shadow:0 1px 8px rgba(0,0,0,0.85);
+  }
+  .hero-tile figcaption span{color:var(--gold);margin-right:0.4rem;}
   .hero h1{
     font-size:2.25rem;line-height:1.05;font-weight:600;text-wrap:balance;
   }
   @media (min-width:640px){.hero h1{font-size:3rem;}}
   @media (min-width:768px){.hero h1{font-size:3.75rem;}}
-  @media (min-width:1024px){.hero h1{font-size:4.5rem;}}
+  @media (min-width:1024px){.hero h1{font-size:3.75rem;}}
+  @media (min-width:1280px){.hero h1{font-size:4.25rem;}}
   .hero .lede{margin-top:1.5rem;max-width:36rem;font-size:1rem;}
   @media (min-width:768px){.hero .lede{font-size:1.125rem;}}
   .hero-actions{margin-top:2.25rem;display:flex;flex-direction:column;gap:0.75rem;}
@@ -357,7 +388,7 @@
 <main>
 
   <section id="top" class="hero">
-    <div class="hero-bg"><img src="images/hero-set.png" alt=""></div>
+    <div class="hero-bg" aria-hidden="true"></div>
     <div class="hero-inner">
       <div class="hero-copy reveal">
         <p class="eyebrow">A limited run of wearable identity</p>
@@ -374,6 +405,18 @@
           <div><dt class="sr-only">Price</dt><dd><span class="stat-num">$74.95</span><span class="stat-label">Per hat, shipping &amp; handling included</span></dd></div>
           <div><dt class="sr-only">Run</dt><dd><span class="stat-num">Limited</span><span class="stat-label">One drop only</span></dd></div>
         </dl>
+      </div>
+
+      <div class="hero-hats reveal" style="--d:150ms">
+        <div class="hero-col">
+          <figure class="hero-tile"><img src="images/marketing-hat.jpg" alt="Black cap embroidered with the word Marketing" style="--pos:center 42%" decoding="async"><figcaption><span>01</span>Marketing</figcaption></figure>
+          <figure class="hero-tile"><img src="images/creative-director-hat.jpg" alt="Black trucker cap embroidered with the words Creative Director" style="--pos:center 48%" decoding="async"><figcaption><span>03</span>Creative Director</figcaption></figure>
+          <figure class="hero-tile"><img src="images/platform-hat.jpg" alt="Black cap embroidered with the word Platform in multicolor thread" style="--pos:center 47%" decoding="async"><figcaption><span>05</span>Platform</figcaption></figure>
+        </div>
+        <div class="hero-col">
+          <figure class="hero-tile"><img src="images/visionary-hat.jpg" alt="Grey trucker cap embroidered with the word Visionary" style="--pos:center 50%" decoding="async"><figcaption><span>02</span>Visionary</figcaption></figure>
+          <figure class="hero-tile"><img src="images/videographer-hat.jpg" alt="Tan trucker cap embroidered with the word Videographer" style="--pos:center 46%" decoding="async"><figcaption><span>04</span>Videographer</figcaption></figure>
+        </div>
       </div>
     </div>
   </section>
