@@ -3,347 +3,606 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#161310">
+<meta name="color-scheme" content="dark">
 <title>Marketing You Can Wear — Brand Vision Pros</title>
 <meta name="description" content="A limited run of wearable identity from Brand Vision Pros. Five titles, embroidered — Visionary, Creative Director, Videographer, Marketing, Platform.">
+<link rel="icon" href="images/icon-light-32x32.png" media="(prefers-color-scheme: light)">
+<link rel="icon" href="images/icon-dark-32x32.png" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="images/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="images/apple-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;1,9..144,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500&family=Inter:wght@400;500;600&family=Manrope:wght@500;600;700&display=swap" rel="stylesheet">
 <style>
   :root{
-    --black:#0a0a0a;
-    --panel: rgba(255,255,255,0.04);
-    --panel-border: rgba(255,255,255,0.08);
-    --gold:#c9a227;
-    --gold-light:#e3c267;
-    --off-white:#f3efe6;
-    --muted:#8a8578;
+    --background:#0b0907;
+    --card:#14110e;
+    --secondary:#221f1b;
+    --foreground:#f3f2ed;
+    --muted-foreground:#a7a49e;
+    --border:rgba(54,50,44,0.4);
+    --border-strong:rgba(54,50,44,0.6);
+    --gold:#e6b551;
+    --gold-foreground:#130c05;
+    --platinum:#dfdeda;
+    --radius:0.5rem;
+    --ease:cubic-bezier(.22,1,.36,1);
   }
   *{margin:0;padding:0;box-sizing:border-box;}
-  html{scroll-behavior:smooth;}
+  html{scroll-behavior:smooth;scroll-padding-top:80px;}
   body{
-    background:var(--black);
-    color:var(--off-white);
-    font-family:'Inter',sans-serif;
+    background:var(--background);
+    color:var(--foreground);
+    font-family:'Inter',ui-sans-serif,system-ui,sans-serif;
     line-height:1.5;
     overflow-x:hidden;
+    -webkit-font-smoothing:antialiased;
   }
-  h1,h2,h3,.serif{font-family:'Fraunces',serif;font-weight:500;}
+  h1,h2,h3,.display{font-family:'Manrope','Inter',ui-sans-serif,system-ui,sans-serif;font-weight:600;letter-spacing:-0.02em;}
+  .mono{font-family:'Geist Mono',ui-monospace,monospace;}
   a{color:inherit;text-decoration:none;}
   img,svg{display:block;max-width:100%;}
+  ul{list-style:none;}
 
-  .wrap{max-width:1180px;margin:0 auto;padding:0 32px;}
+  .container{max-width:80rem;margin:0 auto;padding:0 1.25rem;}
+  @media (min-width:768px){.container{padding:0 2rem;}}
+  .section{padding-top:6rem;padding-bottom:6rem;}
+  @media (min-width:768px){.section{padding-top:8rem;padding-bottom:8rem;}}
+  .band{border-top:1px solid var(--border-strong);border-bottom:1px solid var(--border-strong);background:rgba(20,17,14,0.4);}
 
-  /* NAV */
-  nav{
+  .eyebrow{
+    font-size:0.875rem;text-transform:uppercase;letter-spacing:0.28em;
+    color:var(--gold);margin-bottom:1rem;
+  }
+  h2{
+    font-size:1.875rem;line-height:1.15;text-wrap:balance;max-width:42rem;
+  }
+  @media (min-width:768px){h2{font-size:3rem;}}
+  .lede{color:var(--muted-foreground);line-height:1.625;text-wrap:pretty;}
+  .gold{color:var(--gold);}
+
+  /* BUTTONS */
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;gap:0.5rem;
+    border-radius:999px;font-size:0.875rem;font-weight:500;cursor:pointer;
+    font-family:inherit;border:1px solid transparent;
+  }
+  .btn-gold{
+    background:var(--gold);color:var(--gold-foreground);padding:0.875rem 1.75rem;
+    box-shadow:0 14px 30px -14px rgba(230,181,81,0.5);
+    transition:transform .3s var(--ease), box-shadow .3s var(--ease), background-color .3s, color .3s;
+  }
+  .btn-gold:hover{background:var(--platinum);transform:translateY(-3px);box-shadow:0 24px 48px -16px rgba(230,181,81,0.6);}
+  .btn-gold:active{transform:translateY(-1px);}
+  .btn-ghost{
+    background:rgba(20,17,14,0.4);color:var(--foreground);border-color:var(--border);
+    padding:0.875rem 1.75rem;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
+    transition:transform .3s var(--ease), box-shadow .3s var(--ease), border-color .3s, color .3s;
+  }
+  .btn-ghost:hover{border-color:var(--gold);color:var(--gold);transform:translateY(-3px);box-shadow:0 20px 44px -20px rgba(0,0,0,0.65);}
+  .btn svg{width:1rem;height:1rem;transition:transform .3s var(--ease);}
+  .btn:hover svg{transform:translateX(3px);}
+
+  /* HEADER */
+  header.site{
     position:fixed;top:0;left:0;right:0;z-index:50;
-    display:flex;justify-content:space-between;align-items:center;
-    padding:22px 32px;
-    background:linear-gradient(to bottom, rgba(10,10,10,0.9), transparent);
+    border-bottom:1px solid transparent;background:transparent;
+    transition:background-color .3s, border-color .3s, backdrop-filter .3s;
   }
-  .nav-mark{font-family:'Fraunces',serif;font-size:19px;letter-spacing:0.01em;}
-  .nav-mark span{color:var(--gold);}
-  .nav-cta{
-    border:1px solid var(--panel-border);
-    padding:9px 20px;border-radius:999px;font-size:14px;
-    transition:border-color .2s ease, color .2s ease;
+  header.site.scrolled{
+    background:rgba(11,9,7,0.85);border-color:var(--border-strong);
+    backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
   }
-  .nav-cta:hover{border-color:var(--gold);color:var(--gold-light);}
+  .header-inner{
+    max-width:80rem;margin:0 auto;height:4rem;padding:0 1.25rem;
+    display:flex;align-items:center;justify-content:space-between;
+  }
+  @media (min-width:768px){.header-inner{height:5rem;padding:0 2rem;}}
+  .logo img{width:9rem;height:auto;}
+  @media (min-width:768px){.logo img{width:auto;height:1.75rem;}}
+  .nav-links{display:none;align-items:center;gap:2.25rem;}
+  @media (min-width:768px){.nav-links{display:flex;}}
+  .nav-links a{font-size:0.875rem;color:var(--muted-foreground);transition:color .15s;}
+  .nav-links a:hover{color:var(--foreground);}
+  .header-cta{padding:0.5rem 1rem;}
+  @media (min-width:768px){.header-cta{padding:0.5rem 1.25rem;}}
 
   /* HERO */
-  .hero{
-    position:relative;
-    min-height:100vh;
-    display:flex;align-items:center;
+  .hero{position:relative;isolation:isolate;overflow:hidden;}
+  .hero-bg{position:absolute;inset:0;z-index:-1;}
+  .hero-bg img{width:100%;height:100%;object-fit:cover;}
+  .hero-bg::after{
+    content:'';position:absolute;inset:0;
+    background:linear-gradient(to bottom, rgba(11,9,7,0.7), rgba(11,9,7,0.8) 50%, var(--background));
   }
-  .hero-grid{
-    display:grid;grid-template-columns:1.1fr 0.9fr;
-    align-items:center;gap:40px;width:100%;
-    max-width:1180px;margin:0 auto;padding:140px 32px 80px;
-  }
-  .hero-eyebrow{
-    color:var(--muted);font-size:14px;margin-bottom:22px;
-    max-width:360px;
-  }
+  .hero-inner{max-width:80rem;margin:0 auto;padding:8rem 1.25rem 5rem;}
+  @media (min-width:768px){.hero-inner{padding:11rem 2rem 7rem;}}
+  .hero-copy{max-width:48rem;}
   .hero h1{
-    font-size:clamp(40px, 5.4vw, 68px);
-    line-height:1.05;
-    letter-spacing:-0.01em;
+    font-size:2.25rem;line-height:1.05;font-weight:600;text-wrap:balance;
   }
-  .hero-sub{
-    margin-top:26px;
-    color:var(--muted);
-    font-size:17px;
-    max-width:420px;
+  @media (min-width:640px){.hero h1{font-size:3rem;}}
+  @media (min-width:768px){.hero h1{font-size:3.75rem;}}
+  @media (min-width:1024px){.hero h1{font-size:4.5rem;}}
+  .hero .lede{margin-top:1.5rem;max-width:36rem;font-size:1rem;}
+  @media (min-width:768px){.hero .lede{font-size:1.125rem;}}
+  .hero-actions{margin-top:2.25rem;display:flex;flex-direction:column;gap:0.75rem;}
+  @media (min-width:640px){.hero-actions{flex-direction:row;align-items:center;}}
+  .stats{
+    margin-top:3.5rem;max-width:32rem;padding-top:2rem;
+    border-top:1px solid var(--border-strong);
+    display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;
   }
-  .hero-actions{margin-top:38px;display:flex;gap:16px;align-items:center;flex-wrap:wrap;}
-  .btn-primary{
-    background:var(--gold);color:#0a0a0a;font-weight:600;
-    padding:15px 30px;border-radius:999px;font-size:15px;
-    transition:background .2s ease, transform .2s ease;
-    display:inline-block;
-    border:none;cursor:pointer;font-family:inherit;
-  }
-  .btn-primary:hover{background:var(--gold-light);transform:translateY(-1px);}
-  .btn-ghost{
-    color:var(--off-white);font-size:15px;border-bottom:1px solid var(--panel-border);
-    padding-bottom:2px;transition:border-color .2s ease, color .2s ease;
-  }
-  .btn-ghost:hover{border-color:var(--gold);color:var(--gold-light);}
+  .sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;}
+  .stat-num{display:block;font-size:1.5rem;font-weight:500;color:var(--foreground);}
+  @media (min-width:768px){.stat-num{font-size:1.875rem;}}
+  .stat-label{display:block;margin-top:0.25rem;font-size:0.75rem;color:var(--muted-foreground);}
+  @media (min-width:768px){.stat-label{font-size:0.875rem;}}
 
-  /* HERO CAP VISUAL (illustrated — no photography dependency) */
-  .hero-cap-wrap{
-    position:relative;
-    border-radius:4px;overflow:hidden;
-    aspect-ratio: 1024/1085;
-    border:1px solid var(--panel-border);
-    background:
-      radial-gradient(circle at 50% 38%, rgba(201,162,39,0.16), transparent 60%),
-      var(--black);
-    display:flex;align-items:center;justify-content:center;
-    padding:12%;
+  /* SECTION HEADS */
+  .section-head{
+    margin-bottom:3rem;display:flex;flex-direction:column;gap:1.5rem;
   }
-  .hero-cap-wrap svg{width:100%;height:100%;}
+  @media (min-width:768px){
+    .section-head{margin-bottom:4rem;flex-direction:row;justify-content:space-between;align-items:flex-end;}
+  }
+  .section-head .lede{max-width:24rem;}
 
-  /* PHILOSOPHY STRIP */
-  .strip{
-    border-top:1px solid var(--panel-border);
-    border-bottom:1px solid var(--panel-border);
-    padding:56px 0;
+  /* LINEUP BENTO */
+  .bento{
+    display:grid;grid-template-columns:1fr;grid-auto-rows:280px;gap:1rem;
   }
-  .strip p{
-    font-family:'Fraunces',serif;font-style:italic;font-weight:500;
-    font-size:clamp(22px, 2.6vw, 32px);
-    max-width:800px;line-height:1.4;
-    color:var(--off-white);
+  @media (min-width:768px){
+    .bento{grid-template-columns:repeat(3,1fr);grid-auto-rows:220px;}
+    .bento .span-2x2{grid-column:span 2;grid-row:span 2;}
+    .bento .span-2{grid-column:span 2;}
   }
-  .strip p span{color:var(--gold);font-style:normal;}
+  .card{
+    position:relative;isolation:isolate;overflow:hidden;height:100%;
+    border:1px solid var(--border-strong);border-radius:0.75rem;
+    background:var(--card);
+    box-shadow:0 24px 50px -30px rgba(0,0,0,0.7);
+    transition:transform .45s var(--ease), box-shadow .45s var(--ease), border-color .3s;
+    display:flex;flex-direction:column;justify-content:space-between;padding:1.5rem;
+  }
+  .card:hover{transform:translateY(-6px);box-shadow:0 40px 70px -28px rgba(0,0,0,0.8);border-color:rgba(230,181,81,0.5);}
+  .card-glow{
+    position:absolute;inset:0;z-index:-2;
+    background:radial-gradient(circle at 50% 42%, rgba(230,181,81,0.14), transparent 62%);
+    transition:transform .7s;
+  }
+  .card:hover .card-glow{transform:scale(1.08);}
+  .card-fade{
+    position:absolute;inset:0;z-index:-1;
+    background:linear-gradient(to top, var(--background) 0%, rgba(11,9,7,0.55) 35%, transparent 70%);
+  }
+  .card-photo{
+    position:absolute;z-index:-2;inset:0;width:100%;height:100%;
+    object-fit:cover;object-position:var(--pos, center 30%);max-width:none;
+    transition:transform .7s var(--ease);
+  }
+  .card:hover .card-photo{transform:scale(1.04);}
+  @media (min-width:768px){.card-photo{object-position:var(--pos-md, var(--pos, center 30%));}}
+  .card.has-photo .card-art,.card.has-photo .card-glow{display:none;}
+  .card.has-photo .card-fade{
+    background:linear-gradient(to top, var(--background) 0%, rgba(11,9,7,0.55) 38%, transparent 70%);
+  }
+  @media (min-width:768px){
+    .span-2x2 .card.has-photo .card-photo,
+    .span-2 .card.has-photo .card-photo{
+      left:auto;right:0;width:58%;
+      -webkit-mask-image:linear-gradient(to right, transparent 0%, #000 38%);
+      mask-image:linear-gradient(to right, transparent 0%, #000 38%);
+    }
+    .span-2 .card.has-photo .card-photo{
+      width:48%;
+      -webkit-mask-image:linear-gradient(to right, transparent 0%, #000 20%);
+      mask-image:linear-gradient(to right, transparent 0%, #000 20%);
+    }
+    .span-2x2 .card.has-photo .card-fade,
+    .span-2 .card.has-photo .card-fade{
+      background:linear-gradient(to top, rgba(11,9,7,0.85) 0%, transparent 45%);
+    }
+  }
+  .card{color:inherit;}
+  .card:focus-visible,.pick:focus-visible,.btn:focus-visible{outline:2px solid var(--gold);outline-offset:3px;}
+  .card-cta{
+    position:absolute;right:1.5rem;bottom:1.5rem;font-size:0.8125rem;font-weight:500;
+    color:var(--gold);text-shadow:0 1px 8px rgba(0,0,0,0.85);
+    opacity:0.85;transition:transform .3s var(--ease), opacity .3s;
+  }
+  .card:hover .card-cta,.card:focus-visible .card-cta{opacity:1;transform:translateX(3px);}
+  .card-top{display:flex;align-items:flex-start;justify-content:space-between;}
+  .card-num{font-size:0.75rem;color:var(--gold);}
+  .card-price{font-size:0.875rem;color:var(--foreground);text-shadow:0 1px 8px rgba(0,0,0,0.85);}
+  .card-art{
+    position:absolute;z-index:-1;left:50%;top:41%;transform:translate(-50%,-50%);
+    height:66%;width:auto;aspect-ratio:424/320;max-width:none;
+    transition:transform .7s var(--ease);
+  }
+  .span-2x2 .card-art{height:48%;top:33%;}
+  @media (min-width:768px){.span-2x2 .card-art{height:64%;top:40%;}}
+  .card:hover .card-art{transform:translate(-50%,-52%) scale(1.04);}
+  .card h3{font-size:1.25rem;font-weight:600;color:var(--foreground);}
+  @media (min-width:768px){.card h3{font-size:1.5rem;}}
+  .card p{margin-top:0.5rem;max-width:28rem;font-size:0.875rem;line-height:1.625;color:var(--muted-foreground);}
 
-  /* LINEUP */
-  .lineup{padding:120px 0 100px;}
-  .section-head{margin-bottom:56px;max-width:520px;}
-  .section-head .label{color:var(--gold);font-size:14px;margin-bottom:14px;}
-  .section-head h2{font-size:clamp(28px,3.4vw,40px);line-height:1.15;}
-
-  .lineup-grid{
-    display:grid;grid-template-columns:repeat(5,1fr);gap:14px;
-  }
-  .hat-card{
-    border:1px solid var(--panel-border);
-    background:var(--panel);
-    border-radius:4px;
-    padding:22px 16px 18px;
-    min-height:280px;
-    display:flex;flex-direction:column;justify-content:space-between;
-    transition:border-color .25s ease, background .25s ease, transform .25s ease;
-  }
-  .hat-card:hover{border-color:var(--gold); background:rgba(201,162,39,0.05); transform:translateY(-3px);}
-  .hat-card.featured{border-color:var(--gold);}
-  .hat-visual{width:100%;aspect-ratio:1/0.82;}
-  .hat-meta{
-    display:flex;justify-content:space-between;align-items:baseline;
-    font-size:13px;color:var(--muted);
-    margin-top:14px;
-  }
-  .hat-price{color:var(--off-white);font-size:14px;}
-
-  @media (max-width:900px){
-    .lineup-grid{grid-template-columns:repeat(2,1fr);}
-    .hat-card.featured{grid-column:span 2;min-height:340px;}
-  }
-  @media (max-width:520px){
-    .lineup-grid{grid-template-columns:1fr;}
-    .hat-card.featured{grid-column:span 1;}
-  }
+  .price-note{margin-top:1.25rem;font-size:0.8125rem;color:var(--muted-foreground);}
+  .price-note.center{text-align:center;margin-top:1.5rem;}
 
   /* STORY */
-  .story{padding:100px 0;border-top:1px solid var(--panel-border);}
-  .story-grid{display:grid;grid-template-columns:0.9fr 1.1fr;gap:60px;align-items:start;}
-  .story h2{font-size:clamp(26px,3vw,36px);line-height:1.2;margin-bottom:24px;}
-  .story-copy p{color:var(--muted);font-size:16px;margin-bottom:18px;max-width:440px;}
-  .story-copy strong{color:var(--off-white);font-weight:500;}
-
-  @media (max-width:900px){
-    .story-grid{grid-template-columns:1fr;}
+  .founder-grid{
+    display:grid;grid-template-columns:1fr;gap:2.5rem;align-items:center;
   }
-
-  /* DROP / CTA */
-  .drop{
-    padding:110px 0 130px;
-    text-align:left;
-    border-top:1px solid var(--panel-border);
+  @media (min-width:768px){.founder-grid{grid-template-columns:1fr 1fr;gap:4rem;}}
+  .founder-grid img{
+    width:100%;max-width:28rem;aspect-ratio:4/5;object-fit:cover;object-position:top;
+    border-radius:1rem;border:1px solid var(--border-strong);
   }
-  .drop-inner{max-width:620px;}
-  .drop h2{font-size:clamp(32px,4vw,50px);line-height:1.1;margin-bottom:22px;}
-  .drop p{color:var(--muted);font-size:17px;margin-bottom:38px;}
+  .founder-grid h2{max-width:none;}
+  .story-copy p{margin-top:1.5rem;color:var(--muted-foreground);line-height:1.625;text-wrap:pretty;}
+  .story-copy p strong{color:var(--foreground);font-weight:500;}
 
-  footer{
-    border-top:1px solid var(--panel-border);
-    padding:32px;
-    display:flex;justify-content:space-between;align-items:center;
-    font-size:13px;color:var(--muted);
-    flex-wrap:wrap;gap:12px;
+  /* PANES */
+  .panes{
+    display:grid;grid-template-columns:1fr;gap:1px;overflow:hidden;
+    border:1px solid var(--border-strong);border-radius:0.75rem;background:var(--border-strong);
+    box-shadow:0 34px 70px -34px rgba(0,0,0,0.78);
   }
-  footer a:hover{color:var(--gold-light);}
+  @media (min-width:640px){.panes{grid-template-columns:repeat(2,1fr);}}
+  @media (min-width:1024px){.panes{grid-template-columns:repeat(4,1fr);}}
+  .pane{
+    display:flex;flex-direction:column;gap:1rem;height:100%;padding:2rem;
+    background:var(--background);transition:background-color .2s;
+  }
+  .pane:hover{background:var(--card);}
+  .pane-num{font-size:2.25rem;font-weight:600;color:var(--gold);}
+  @media (min-width:768px){.pane-num{font-size:3rem;}}
+  .pane h3{font-size:1.25rem;}
+  .pane p{font-size:0.875rem;line-height:1.625;color:var(--muted-foreground);}
 
-  @media (max-width:900px){
-    .hero-grid{grid-template-columns:1fr;padding-top:120px;}
-    .hero-cap-wrap{order:-1;aspect-ratio:16/10;}
+  /* DROP CTA */
+  .drop-wrap{max-width:48rem;margin:0 auto;}
+  .drop-head{text-align:center;margin-bottom:2.5rem;}
+  .drop-head h2{margin:0 auto;}
+  .drop-head .lede{margin:1rem auto 0;max-width:32rem;}
+  .drop-panel{
+    border:1px solid var(--border-strong);border-radius:1rem;
+    background:rgba(20,17,14,0.6);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
+    padding:1.5rem;box-shadow:0 34px 70px -34px rgba(0,0,0,0.78);
+  }
+  @media (min-width:768px){.drop-panel{padding:2.5rem;}}
+  .pick-grid{display:grid;grid-template-columns:1fr;gap:0.75rem;}
+  @media (min-width:640px){.pick-grid{grid-template-columns:1fr 1fr;}.pick:last-child{grid-column:1/-1;}}
+  .pick{
+    display:flex;align-items:center;gap:0.75rem;padding:1rem;
+    border:1px solid var(--border);border-radius:0.5rem;
+    transition:border-color .2s, background-color .2s;
+  }
+  .pick:hover{border-color:rgba(230,181,81,0.5);background:rgba(34,31,27,0.5);}
+  .pick-icon{
+    width:2.5rem;height:2.5rem;flex-shrink:0;border-radius:0.375rem;background:var(--secondary);
+    color:var(--gold);display:flex;align-items:center;justify-content:center;font-size:0.75rem;
+  }
+  .pick-name{font-size:0.875rem;font-weight:500;flex:1;}
+  .pick-price{font-size:0.875rem;color:var(--muted-foreground);}
+  .drop-actions{margin-top:2rem;display:flex;justify-content:center;}
+
+  /* FOOTER */
+  footer{border-top:1px solid var(--border-strong);background:rgba(20,17,14,0.4);}
+  .footer-inner{max-width:80rem;margin:0 auto;padding:4rem 1.25rem;}
+  @media (min-width:768px){.footer-inner{padding:5rem 2rem;}}
+  .footer-grid{display:grid;grid-template-columns:1fr;gap:3rem;}
+  @media (min-width:768px){.footer-grid{grid-template-columns:repeat(2,1fr);}}
+  @media (min-width:1024px){.footer-grid{grid-template-columns:repeat(4,1fr);}}
+  .footer-logo img{height:1.5rem;width:auto;}
+  .footer-blurb{margin-top:1.25rem;max-width:20rem;font-size:0.875rem;line-height:1.625;color:var(--muted-foreground);}
+  footer h4{margin-bottom:1rem;font-size:0.875rem;font-weight:500;color:var(--foreground);font-family:'Inter',sans-serif;}
+  footer li{margin-bottom:0.75rem;}
+  footer li a{font-size:0.875rem;color:var(--muted-foreground);transition:color .15s;}
+  footer li a:hover{color:var(--gold);}
+  .footer-bar{
+    margin-top:3.5rem;padding-top:2rem;border-top:1px solid var(--border-strong);
+    display:flex;flex-direction:column;gap:1.5rem;align-items:flex-start;justify-content:space-between;
+  }
+  @media (min-width:768px){.footer-bar{flex-direction:row;align-items:center;}}
+  .footer-bar p{font-size:0.875rem;color:var(--muted-foreground);}
+  .footer-bar .btn-gold{padding:0.75rem 1.5rem;}
+
+  /* SCROLL REVEAL */
+  .js .reveal{
+    opacity:0;transform:translateY(2rem);filter:blur(3px);
+    transition:opacity .7s ease-out, transform .7s ease-out, filter .7s ease-out;
+    transition-delay:var(--d,0ms);
+  }
+  .js .reveal.in{opacity:1;transform:none;filter:none;}
+  @media (prefers-reduced-motion:reduce){
+    .js .reveal{opacity:1;transform:none;filter:none;transition:none;}
+    html{scroll-behavior:auto;}
+    .card,.card-art,.card-glow,.btn{transition:none;}
   }
 </style>
 </head>
 <body>
+<script>document.documentElement.classList.add('js');</script>
 
-<nav>
-  <div class="nav-mark">Brand Vision <span>Pros</span></div>
-  <a href="#drop" class="nav-cta">Shop the Drop</a>
-</nav>
+<!-- Shared cap illustration -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <g id="cap">
+      <path d="M45 236 C 10 244, -8 262, -14 276 C 30 296, 130 296, 200 262 L 172 224 Z" fill="#100d0a" stroke="#e6b551" stroke-width="1.5"/>
+      <path d="M58 226 C 34 128, 108 34, 210 34 C 312 34, 378 120, 356 224 C 292 250, 118 250, 58 226 Z" fill="#14110e" stroke="#e6b551" stroke-width="1.5"/>
+      <path d="M210 34 C 198 100, 198 180, 210 228" stroke="#e6b551" stroke-width="1" opacity="0.45" fill="none"/>
+      <path d="M96 60 C 130 175, 150 210, 168 232" stroke="#e6b551" stroke-width="1" opacity="0.28" fill="none"/>
+      <path d="M324 60 C 290 175, 270 210, 252 232" stroke="#e6b551" stroke-width="1" opacity="0.28" fill="none"/>
+      <circle cx="210" cy="34" r="6" fill="#e6b551"/>
+    </g>
+  </defs>
+</svg>
 
-<section class="hero">
-  <div class="hero-grid">
-    <div>
-      <div class="hero-eyebrow">A LIMITED RUN OF WEARABLE IDENTITY — DESIGNED, NOT MERCHANDISED</div>
-      <h1>Marketing<br>You Can Wear.</h1>
-      <p class="hero-sub">Anyone can get a hat embroidered. Not everyone can wear proof. Five titles, built the same way I build brands — with intention, not decoration.</p>
-      <div class="hero-actions">
-        <a href="#drop" class="btn-primary">Shop the Drop</a>
-        <a href="#story" class="btn-ghost">Why I made these</a>
-      </div>
-    </div>
-    <div class="hero-cap-wrap">
-      <svg viewBox="0 0 400 320" role="img" aria-label="Black cap with gold Marketing embroidery">
-        <path d="M45 236 C 10 244, -8 262, -14 276 C 30 296, 130 296, 200 262 L 172 224 Z" fill="#111111" stroke="#c9a227" stroke-width="1.5"/>
-        <path d="M58 226 C 34 128, 108 34, 210 34 C 312 34, 378 120, 356 224 C 292 250, 118 250, 58 226 Z" fill="#151515" stroke="#c9a227" stroke-width="1.5"/>
-        <path d="M210 34 C 198 100, 198 180, 210 228" stroke="#c9a227" stroke-width="1" opacity="0.45" fill="none"/>
-        <path d="M96 60 C 130 175, 150 210, 168 232" stroke="#c9a227" stroke-width="1" opacity="0.3" fill="none"/>
-        <path d="M324 60 C 290 175, 270 210, 252 232" stroke="#c9a227" stroke-width="1" opacity="0.3" fill="none"/>
-        <circle cx="210" cy="34" r="6" fill="#c9a227"/>
-        <path id="heroArc" d="M118 168 Q 210 108 302 168" fill="none"/>
-        <text font-family="Fraunces, serif" font-style="italic" font-weight="500" font-size="40" fill="#e3c267" letter-spacing="0.5">
-          <textPath href="#heroArc" startOffset="50%" text-anchor="middle">Marketing</textPath>
-        </text>
-      </svg>
-    </div>
+<header class="site" id="siteHeader">
+  <div class="header-inner">
+    <a href="#top" class="logo" aria-label="Brand Vision Pros home"><img src="images/logo.png" alt="Brand Vision Pros"></a>
+    <nav class="nav-links" aria-label="Primary">
+      <a href="#lineup">The Lineup</a>
+      <a href="#story">Story</a>
+      <a href="#standard">The Standard</a>
+      <a href="#drop">The Drop</a>
+    </nav>
+    <a href="#drop" class="btn btn-gold header-cta">Shop the drop</a>
   </div>
-</section>
+</header>
 
-<section class="strip">
-  <div class="wrap">
-    <p>This isn't merch. This is <span>Brand Vision Pros</span>, worn.</p>
-  </div>
-</section>
+<main>
 
-<section class="lineup" id="drop">
-  <div class="wrap">
-    <div class="section-head">
-      <div class="label">THE LINEUP</div>
-      <h2>One brand. Five identities. Zero explaining needed.</h2>
-    </div>
-    <div class="lineup-grid">
-
-      <div class="hat-card featured">
-        <svg class="hat-visual" viewBox="0 0 400 320" role="img" aria-label="Cap embroidered with the word Marketing">
-          <path d="M45 236 C 10 244, -8 262, -14 276 C 30 296, 130 296, 200 262 L 172 224 Z" fill="#111111" stroke="#c9a227" stroke-width="1.5"/>
-          <path d="M58 226 C 34 128, 108 34, 210 34 C 312 34, 378 120, 356 224 C 292 250, 118 250, 58 226 Z" fill="#151515" stroke="#c9a227" stroke-width="1.5"/>
-          <path d="M210 34 C 198 100, 198 180, 210 228" stroke="#c9a227" stroke-width="1" opacity="0.45" fill="none"/>
-          <circle cx="210" cy="34" r="6" fill="#c9a227"/>
-          <path id="arc1" d="M118 168 Q 210 108 302 168" fill="none"/>
-          <text font-family="Fraunces, serif" font-style="italic" font-weight="500" font-size="34" fill="#e3c267">
-            <textPath href="#arc1" startOffset="50%" text-anchor="middle">Marketing</textPath>
-          </text>
-        </svg>
-        <div class="hat-meta"><span>Cap</span><span class="hat-price">$45</span></div>
-      </div>
-
-      <div class="hat-card">
-        <svg class="hat-visual" viewBox="0 0 400 320" role="img" aria-label="Cap embroidered with the word Visionary">
-          <path d="M45 236 C 10 244, -8 262, -14 276 C 30 296, 130 296, 200 262 L 172 224 Z" fill="#111111" stroke="#c9a227" stroke-width="1.5"/>
-          <path d="M58 226 C 34 128, 108 34, 210 34 C 312 34, 378 120, 356 224 C 292 250, 118 250, 58 226 Z" fill="#151515" stroke="#c9a227" stroke-width="1.5"/>
-          <path d="M210 34 C 198 100, 198 180, 210 228" stroke="#c9a227" stroke-width="1" opacity="0.45" fill="none"/>
-          <circle cx="210" cy="34" r="6" fill="#c9a227"/>
-          <path id="arc2" d="M110 168 Q 210 108 310 168" fill="none"/>
-          <text font-family="Fraunces, serif" font-style="italic" font-weight="500" font-size="30" fill="#e3c267">
-            <textPath href="#arc2" startOffset="50%" text-anchor="middle">Visionary</textPath>
-          </text>
-        </svg>
-        <div class="hat-meta"><span>Cap</span><span class="hat-price">$45</span></div>
-      </div>
-
-      <div class="hat-card">
-        <svg class="hat-visual" viewBox="0 0 400 320" role="img" aria-label="Cap embroidered with the words Creative Director">
-          <path d="M45 236 C 10 244, -8 262, -14 276 C 30 296, 130 296, 200 262 L 172 224 Z" fill="#111111" stroke="#c9a227" stroke-width="1.5"/>
-          <path d="M58 226 C 34 128, 108 34, 210 34 C 312 34, 378 120, 356 224 C 292 250, 118 250, 58 226 Z" fill="#151515" stroke="#c9a227" stroke-width="1.5"/>
-          <path d="M210 34 C 198 100, 198 180, 210 228" stroke="#c9a227" stroke-width="1" opacity="0.45" fill="none"/>
-          <circle cx="210" cy="34" r="6" fill="#c9a227"/>
-          <path id="arc3a" d="M120 150 Q 210 100 300 150" fill="none"/>
-          <path id="arc3b" d="M108 195 Q 210 165 312 195" fill="none"/>
-          <text font-family="Fraunces, serif" font-style="italic" font-weight="500" font-size="24" fill="#e3c267">
-            <textPath href="#arc3a" startOffset="50%" text-anchor="middle">Creative</textPath>
-          </text>
-          <text font-family="Fraunces, serif" font-style="italic" font-weight="500" font-size="24" fill="#e3c267">
-            <textPath href="#arc3b" startOffset="50%" text-anchor="middle">Director</textPath>
-          </text>
-        </svg>
-        <div class="hat-meta"><span>Cap</span><span class="hat-price">$45</span></div>
-      </div>
-
-      <div class="hat-card">
-        <svg class="hat-visual" viewBox="0 0 400 320" role="img" aria-label="Cap embroidered with the word Videographer">
-          <path d="M45 236 C 10 244, -8 262, -14 276 C 30 296, 130 296, 200 262 L 172 224 Z" fill="#111111" stroke="#c9a227" stroke-width="1.5"/>
-          <path d="M58 226 C 34 128, 108 34, 210 34 C 312 34, 378 120, 356 224 C 292 250, 118 250, 58 226 Z" fill="#151515" stroke="#c9a227" stroke-width="1.5"/>
-          <path d="M210 34 C 198 100, 198 180, 210 228" stroke="#c9a227" stroke-width="1" opacity="0.45" fill="none"/>
-          <circle cx="210" cy="34" r="6" fill="#c9a227"/>
-          <path id="arc4" d="M100 168 Q 210 100 320 168" fill="none"/>
-          <text font-family="Fraunces, serif" font-style="italic" font-weight="500" font-size="26" fill="#e3c267">
-            <textPath href="#arc4" startOffset="50%" text-anchor="middle">Videographer</textPath>
-          </text>
-        </svg>
-        <div class="hat-meta"><span>Cap</span><span class="hat-price">$45</span></div>
-      </div>
-
-      <div class="hat-card">
-        <svg class="hat-visual" viewBox="0 0 400 320" role="img" aria-label="Cap embroidered with the word Platform">
-          <path d="M45 236 C 10 244, -8 262, -14 276 C 30 296, 130 296, 200 262 L 172 224 Z" fill="#111111" stroke="#c9a227" stroke-width="1.5"/>
-          <path d="M58 226 C 34 128, 108 34, 210 34 C 312 34, 378 120, 356 224 C 292 250, 118 250, 58 226 Z" fill="#151515" stroke="#c9a227" stroke-width="1.5"/>
-          <path d="M210 34 C 198 100, 198 180, 210 228" stroke="#c9a227" stroke-width="1" opacity="0.45" fill="none"/>
-          <circle cx="210" cy="34" r="6" fill="#c9a227"/>
-          <path id="arc5" d="M118 168 Q 210 108 302 168" fill="none"/>
-          <text font-family="Fraunces, serif" font-style="italic" font-weight="500" font-size="32" fill="#e3c267">
-            <textPath href="#arc5" startOffset="50%" text-anchor="middle">Platform</textPath>
-          </text>
-        </svg>
-        <div class="hat-meta"><span>Cap</span><span class="hat-price">$45</span></div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<section class="story" id="story">
-  <div class="wrap">
-    <div class="story-grid">
-      <h2>Built for the work,<br>not the shelf.</h2>
-      <div class="story-copy">
-        <p>These titles exist because I needed them before I ever thought about selling them. <strong>Visionary. Creative Director. Videographer. Marketing. Platform.</strong> Every one earned its place the same way — by being true on set, in client meetings, on flights, in rooms full of strangers who asked what I do before I said a word.</p>
-        <p>That's the actual product. Not the stitching — the proof behind it. A hat like this can be copied. What it took to earn wearing it can't.</p>
+  <section id="top" class="hero">
+    <div class="hero-bg"><img src="images/hero-set.png" alt=""></div>
+    <div class="hero-inner">
+      <div class="hero-copy reveal">
+        <p class="eyebrow">A limited run of wearable identity</p>
+        <h1>Marketing You Can Wear. <span class="gold">Designed, not merchandised.</span></h1>
+        <p class="lede">Anyone can get a hat embroidered. Not everyone can wear proof. Five titles, built the same way I build brands — with intention, not decoration.</p>
+        <div class="hero-actions">
+          <a href="#drop" class="btn btn-gold">Shop the drop
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+          <a href="#story" class="btn btn-ghost">Why I made these</a>
+        </div>
+        <dl class="stats">
+          <div><dt class="sr-only">Titles</dt><dd><span class="stat-num">5</span><span class="stat-label">Titles</span></dd></div>
+          <div><dt class="sr-only">Price</dt><dd><span class="stat-num">$74.95</span><span class="stat-label">Per hat, shipping &amp; handling included</span></dd></div>
+          <div><dt class="sr-only">Run</dt><dd><span class="stat-num">Limited</span><span class="stat-label">One drop only</span></dd></div>
+        </dl>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<section class="drop">
-  <div class="wrap">
-    <div class="drop-inner">
-      <h2>Limited drop. Once they're gone, they're gone.</h2>
-      <p>Five titles. One standard. Pick yours.</p>
-      <a href="#drop" class="btn-primary">Shop the Drop</a>
+  <section class="band" aria-label="Philosophy">
+    <div class="container" style="padding-top:3.5rem;padding-bottom:3.5rem;">
+      <p class="display reveal" style="font-size:clamp(1.5rem,2.8vw,2.25rem);line-height:1.25;max-width:52rem;text-wrap:balance;">This isn't merch. This is <span class="gold">Brand Vision Pros</span>, worn.</p>
     </div>
-  </div>
-</section>
+  </section>
+
+  <section id="lineup" class="section container">
+    <div class="section-head reveal">
+      <div>
+        <p class="eyebrow">The lineup</p>
+        <h2>One brand. Five identities. Zero explaining needed.</h2>
+      </div>
+      <p class="lede">Every title is embroidered on the same standard cap — the only variable is what you've earned.</p>
+    </div>
+
+    <div class="bento">
+
+      <div class="span-2x2 reveal" style="--d:0ms">
+        <a class="card has-photo" href="https://buy.stripe.com/eVqaEX9CydXJ1Q45JM7IY2p" aria-label="Buy Marketing for $74.95, shipping and handling included">
+          <img class="card-photo" src="images/marketing-hat.jpg" alt="Black cap embroidered with the word Marketing in gold script" onerror="this.closest('.card').classList.remove('has-photo');this.remove();">
+          <div class="card-glow"></div>
+          <svg class="card-art" viewBox="-24 0 424 320" role="img" aria-label="Cap embroidered with the word Marketing">
+            <use href="#cap"/>
+            <path id="arc-marketing" d="M118 168 Q 210 108 302 168" fill="none"/>
+            <text font-family="Manrope, sans-serif" font-weight="700" font-size="32" letter-spacing="1" fill="#e6b551"><textPath href="#arc-marketing" startOffset="50%" text-anchor="middle">Marketing</textPath></text>
+          </svg>
+          <div class="card-fade"></div>
+          <div class="card-top"><span class="card-num mono">01</span><span class="card-price mono">$74.95*</span></div>
+          <div>
+            <h3>Marketing</h3>
+            <p>Embroidered script on black — for the person whose work is making other people's work land.</p>
+          </div>
+        <span class="card-cta" aria-hidden="true">Buy now &rarr;</span>
+        </a>
+      </div>
+
+      <div class="reveal" style="--d:90ms">
+        <a class="card has-photo" style="--pos:center 52%;--pos-md:center 43%" href="https://buy.stripe.com/dRmcN59Cyg5R7ao2xA7IY2q" aria-label="Buy Visionary for $74.95, shipping and handling included">
+          <img class="card-photo" src="images/visionary-hat.jpg" alt="Grey trucker cap embroidered with the word Visionary in gold" loading="lazy" onerror="this.closest('.card').classList.remove('has-photo');this.remove();">
+          <div class="card-glow"></div>
+          <svg class="card-art" viewBox="-24 0 424 320" role="img" aria-label="Cap embroidered with the word Visionary">
+            <use href="#cap"/>
+            <path id="arc-visionary" d="M110 168 Q 210 108 310 168" fill="none"/>
+            <text font-family="Manrope, sans-serif" font-weight="700" font-size="30" letter-spacing="1" fill="#e6b551"><textPath href="#arc-visionary" startOffset="50%" text-anchor="middle">Visionary</textPath></text>
+          </svg>
+          <div class="card-fade"></div>
+          <div class="card-top"><span class="card-num mono">02</span><span class="card-price mono">$74.95*</span></div>
+          <div><h3>Visionary</h3></div>
+        <span class="card-cta" aria-hidden="true">Buy now &rarr;</span>
+        </a>
+      </div>
+
+      <div class="reveal" style="--d:180ms">
+        <a class="card has-photo" style="--pos:center 50%;--pos-md:center 47%" href="https://buy.stripe.com/6oU14n7uq9HtamA7RU7IY2t" aria-label="Buy Creative Director for $74.95, shipping and handling included">
+          <img class="card-photo" src="images/creative-director-hat.jpg" alt="Black trucker cap embroidered with the words Creative Director in white" loading="lazy" onerror="this.closest('.card').classList.remove('has-photo');this.remove();">
+          <div class="card-glow"></div>
+          <svg class="card-art" viewBox="-24 0 424 320" role="img" aria-label="Cap embroidered with the words Creative Director">
+            <use href="#cap"/>
+            <path id="arc-cd-a" d="M120 150 Q 210 100 300 150" fill="none"/>
+            <path id="arc-cd-b" d="M108 195 Q 210 165 312 195" fill="none"/>
+            <text font-family="Manrope, sans-serif" font-weight="700" font-size="24" letter-spacing="1" fill="#e6b551"><textPath href="#arc-cd-a" startOffset="50%" text-anchor="middle">Creative</textPath></text>
+            <text font-family="Manrope, sans-serif" font-weight="700" font-size="24" letter-spacing="1" fill="#e6b551"><textPath href="#arc-cd-b" startOffset="50%" text-anchor="middle">Director</textPath></text>
+          </svg>
+          <div class="card-fade"></div>
+          <div class="card-top"><span class="card-num mono">03</span><span class="card-price mono">$74.95*</span></div>
+          <div><h3>Creative Director</h3></div>
+        <span class="card-cta" aria-hidden="true">Buy now &rarr;</span>
+        </a>
+      </div>
+
+      <div class="reveal" style="--d:270ms">
+        <a class="card has-photo" style="--pos:center 50%;--pos-md:center 38%" href="https://buy.stripe.com/8x2fZh8yubPB7ao4FI7IY2r" aria-label="Buy Videographer for $74.95, shipping and handling included">
+          <img class="card-photo" src="images/videographer-hat.jpg" alt="Tan trucker cap embroidered with the word Videographer in white" loading="lazy" onerror="this.closest('.card').classList.remove('has-photo');this.remove();">
+          <div class="card-glow"></div>
+          <svg class="card-art" viewBox="-24 0 424 320" role="img" aria-label="Cap embroidered with the word Videographer">
+            <use href="#cap"/>
+            <path id="arc-video" d="M100 168 Q 210 100 320 168" fill="none"/>
+            <text font-family="Manrope, sans-serif" font-weight="700" font-size="21" letter-spacing="0.5" fill="#e6b551"><textPath href="#arc-video" startOffset="50%" text-anchor="middle">Videographer</textPath></text>
+          </svg>
+          <div class="card-fade"></div>
+          <div class="card-top"><span class="card-num mono">04</span><span class="card-price mono">$74.95*</span></div>
+          <div><h3>Videographer</h3></div>
+        <span class="card-cta" aria-hidden="true">Buy now &rarr;</span>
+        </a>
+      </div>
+
+      <div class="span-2 reveal" style="--d:360ms">
+        <a class="card has-photo" style="--pos:center 50%;--pos-md:center 40%" href="https://buy.stripe.com/9B67sL5mi5rdfGU4FI7IY2s" aria-label="Buy Platform for $74.95, shipping and handling included">
+          <img class="card-photo" src="images/platform-hat.jpg" alt="Black cap embroidered with the word Platform in multicolor thread" loading="lazy" onerror="this.closest('.card').classList.remove('has-photo');this.remove();">
+          <div class="card-glow"></div>
+          <svg class="card-art" viewBox="-24 0 424 320" role="img" aria-label="Cap embroidered with the word Platform">
+            <use href="#cap"/>
+            <path id="arc-platform" d="M118 168 Q 210 108 302 168" fill="none"/>
+            <text font-family="Manrope, sans-serif" font-weight="700" font-size="32" letter-spacing="1" fill="#e6b551"><textPath href="#arc-platform" startOffset="50%" text-anchor="middle">Platform</textPath></text>
+          </svg>
+          <div class="card-fade"></div>
+          <div class="card-top"><span class="card-num mono">05</span><span class="card-price mono">$74.95*</span></div>
+          <div><h3>Platform</h3></div>
+        <span class="card-cta" aria-hidden="true">Buy now &rarr;</span>
+        </a>
+      </div>
+
+    </div>
+    <p class="price-note">*$74.95 per hat. Includes shipping and handling.</p>
+  </section>
+
+  <section id="story" class="band">
+    <div class="container section">
+      <div class="founder-grid">
+        <div class="reveal">
+          <img src="images/founder.jpg" alt="Tristan “Trae” Turner, Founder of Brand Vision Pros" loading="lazy">
+        </div>
+        <div class="reveal story-copy" style="--d:90ms">
+          <p class="eyebrow" style="margin-bottom:1rem;">Why I made these</p>
+          <h2>Built for the work, not the shelf.</h2>
+          <p>These titles exist because I needed them before I ever thought about selling them. <strong>Visionary. Creative Director. Videographer. Marketing. Platform.</strong> Every one earned its place the same way — by being true on set, in client meetings, on flights, in rooms full of strangers who asked what I do before I said a word.</p>
+          <p>That's the actual product. Not the stitching — the proof behind it. A hat like this can be copied. What it took to earn wearing it can't.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="standard" class="section container">
+    <div class="reveal" style="margin-bottom:3rem;max-width:42rem;">
+      <p class="eyebrow">The standard</p>
+      <h2>Where a title gets earned.</h2>
+    </div>
+    <div class="panes">
+      <div class="reveal" style="--d:0ms"><div class="pane"><span class="pane-num display">01</span><h3>On set</h3><p>Where the work is made — long days, real stakes, and a title that has to be true.</p></div></div>
+      <div class="reveal" style="--d:90ms"><div class="pane"><span class="pane-num display">02</span><h3>In client meetings</h3><p>Where the work is defended — strategy, taste, and the reasons behind every decision.</p></div></div>
+      <div class="reveal" style="--d:180ms"><div class="pane"><span class="pane-num display">03</span><h3>On flights</h3><p>Where the work travels — between cities, rooms, and the next thing worth building.</p></div></div>
+      <div class="reveal" style="--d:270ms"><div class="pane"><span class="pane-num display">04</span><h3>In rooms of strangers</h3><p>Where the hat speaks first — before anyone asks what you do.</p></div></div>
+    </div>
+  </section>
+
+  <section id="drop" class="band">
+    <div class="container section">
+      <div class="drop-wrap">
+        <div class="drop-head reveal">
+          <p class="eyebrow">Limited drop</p>
+          <h2>Once they're gone, they're gone.</h2>
+          <p class="lede">Five titles. One standard. Pick yours.</p>
+        </div>
+        <div class="drop-panel reveal" style="--d:120ms">
+          <div class="pick-grid">
+            <a href="https://buy.stripe.com/eVqaEX9CydXJ1Q45JM7IY2p" class="pick"><span class="pick-icon mono">01</span><span class="pick-name">Marketing</span><span class="pick-price mono">$74.95*</span></a>
+            <a href="https://buy.stripe.com/dRmcN59Cyg5R7ao2xA7IY2q" class="pick"><span class="pick-icon mono">02</span><span class="pick-name">Visionary</span><span class="pick-price mono">$74.95*</span></a>
+            <a href="https://buy.stripe.com/6oU14n7uq9HtamA7RU7IY2t" class="pick"><span class="pick-icon mono">03</span><span class="pick-name">Creative Director</span><span class="pick-price mono">$74.95*</span></a>
+            <a href="https://buy.stripe.com/8x2fZh8yubPB7ao4FI7IY2r" class="pick"><span class="pick-icon mono">04</span><span class="pick-name">Videographer</span><span class="pick-price mono">$74.95*</span></a>
+            <a href="https://buy.stripe.com/9B67sL5mi5rdfGU4FI7IY2s" class="pick"><span class="pick-icon mono">05</span><span class="pick-name">Platform</span><span class="pick-price mono">$74.95*</span></a>
+          </div>
+          <p class="price-note center">*$74.95 per hat. Includes shipping and handling.</p>
+          <div class="drop-actions">
+            <a href="#drop" class="btn btn-gold">Shop the drop
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
 
 <footer>
-  <div>© 2026 Brand Vision Pros</div>
-  <div><a href="https://instagram.com/brandvisionpros" target="_blank">@brandvisionpros</a></div>
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div>
+        <a href="#top" class="footer-logo" aria-label="Brand Vision Pros home"><img src="images/logo.png" alt="Brand Vision Pros"></a>
+        <p class="footer-blurb">Premium creative &amp; multimedia production — and now, marketing you can wear.</p>
+      </div>
+      <div>
+        <h4>The Lineup</h4>
+        <ul>
+          <li><a href="#lineup">Marketing</a></li>
+          <li><a href="#lineup">Visionary</a></li>
+          <li><a href="#lineup">Creative Director</a></li>
+          <li><a href="#lineup">Videographer</a></li>
+          <li><a href="#lineup">Platform</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#story">Why I made these</a></li>
+          <li><a href="#standard">The Standard</a></li>
+          <li><a href="https://www.brandvisionpros.com/" target="_blank" rel="noopener">Brand Vision Pros</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Connect</h4>
+        <ul>
+          <li><a href="https://instagram.com/brandvisionpros" target="_blank" rel="noopener">Instagram</a></li>
+          <li><a href="https://www.brandvisionpros.com/#funnel" target="_blank" rel="noopener">Start a project</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bar">
+      <p>© 2026 Brand Vision Pros. All rights reserved.</p>
+      <a href="#drop" class="btn btn-gold">Shop the drop
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+    </div>
+  </div>
 </footer>
 
+<script>
+  (function(){
+    var header = document.getElementById('siteHeader');
+    function onScroll(){ header.classList.toggle('scrolled', window.scrollY > 24); }
+    onScroll();
+    window.addEventListener('scroll', onScroll, {passive:true});
+
+    var els = document.querySelectorAll('.reveal');
+    if (!('IntersectionObserver' in window)) {
+      els.forEach(function(el){ el.classList.add('in'); });
+      return;
+    }
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    els.forEach(function(el){ io.observe(el); });
+  })();
+</script>
 </body>
 </html>
