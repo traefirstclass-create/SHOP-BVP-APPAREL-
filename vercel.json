@@ -1,0 +1,9 @@
+{
+  "redirects": [
+    {
+      "source": "/(.*)",
+      "destination": "https://www.brandvisionpros.com/apparel",
+      "permanent": true
+    }
+  ]
+}
